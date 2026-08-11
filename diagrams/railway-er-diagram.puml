@@ -1,0 +1,137 @@
+@startuml
+title Railway Management System - Chen ER Diagram
+
+left to right direction
+skinparam linetype ortho
+skinparam shadowing false
+skinparam rectangle {
+  BackgroundColor #E8F1FA
+  BorderColor #24527A
+}
+skinparam usecase {
+  BackgroundColor #FFF8DC
+  BorderColor #8A6D1D
+}
+
+' ==================== ENTITIES ====================
+
+rectangle "USER" as user
+rectangle "BOOKING" as booking
+rectangle "TRAIN" as train
+rectangle "STATION" as station
+rectangle "WAITING ENTRY" as waiting
+rectangle "BOOKING ACTION" as action
+
+' ==================== RELATIONSHIPS ====================
+
+diamond "MAKES" as makes
+diamond "FOR" as booking_for
+diamond "JOINS" as joins
+diamond "WAITING FOR" as waiting_for
+diamond "PERFORMS" as performs
+diamond "CONCERNS" as concerns
+diamond "STARTS AT" as starts_at
+diamond "ENDS AT" as ends_at
+diamond "CONNECTED TO" as connected_to
+
+user "1" -- makes
+makes -- "N" booking
+
+booking "N" -- booking_for
+booking_for -- "1" train
+
+user "1" -- joins
+joins -- "N" waiting
+
+waiting "N" -- waiting_for
+waiting_for -- "1" train
+
+user "1" -- performs
+performs -- "N" action
+
+action "N" -- concerns
+concerns -- "1" train
+
+train "N" -- starts_at
+starts_at -- "1" station
+
+train "N" -- ends_at
+ends_at -- "1" station
+
+station "N" -- connected_to
+connected_to -- "N" station
+
+' ==================== USER ATTRIBUTES ====================
+
+usecase "<u>username</u>" as user_username
+usecase "password" as user_password
+
+user -- user_username
+user -- user_password
+
+' ==================== BOOKING ATTRIBUTES ====================
+
+usecase "<u>bookingId</u>" as booking_id
+usecase "username (FK)" as booking_username
+usecase "trainId (FK)" as booking_train_id
+
+booking -- booking_id
+booking -- booking_username
+booking -- booking_train_id
+
+' ==================== TRAIN ATTRIBUTES ====================
+
+usecase "<u>trainId</u>" as train_id
+usecase "trainName" as train_name
+usecase "totalSeats" as total_seats
+usecase "availableSeats" as available_seats
+
+train -- train_id
+train -- train_name
+train -- total_seats
+train -- available_seats
+
+' ==================== STATION ATTRIBUTES ====================
+
+usecase "<u>stationId</u>" as station_id
+usecase "stationName" as station_name
+
+station -- station_id
+station -- station_name
+
+' ==================== WAITING ENTRY ATTRIBUTES ====================
+
+usecase "<u>waitingEntryId</u>" as waiting_id
+usecase "username (FK)" as waiting_username
+usecase "trainId (FK)" as waiting_train_id
+usecase "queuePosition" as queue_position
+
+waiting -- waiting_id
+waiting -- waiting_username
+waiting -- waiting_train_id
+waiting -- queue_position
+
+' ==================== ACTION ATTRIBUTES ====================
+
+usecase "<u>actionId</u>" as action_id
+usecase "actionType" as action_type
+usecase "username (FK)" as action_username
+usecase "bookingId" as action_booking_id
+usecase "trainId (FK)" as action_train_id
+
+action -- action_id
+action -- action_type
+action -- action_username
+action -- action_booking_id
+action -- action_train_id
+
+legend bottom
+  |= Shape |= Meaning |
+  | Rectangle | Entity |
+  | Oval | Attribute |
+  | Underlined oval | Primary key |
+  | Diamond | Relationship |
+  | 1 / N | Relationship cardinality |
+endlegend
+
+@enduml

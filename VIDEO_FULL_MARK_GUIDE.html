@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Railway Project Progress Video — Six-Member Full-Mark Guide</title>
+<style>
+@page { size: A4; margin: 15mm 15mm 17mm; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #172235; font-size: 10.2pt; line-height: 1.42; }
+h1 { font-size: 25pt; line-height: 1.12; margin: 0 0 10px; color: #12355b; }
+h2 { font-size: 17pt; color: #12355b; border-bottom: 2px solid #2f75b5; padding-bottom: 4px; margin: 18px 0 9px; }
+h3 { font-size: 12.5pt; color: #1f5d8f; margin: 14px 0 5px; }
+h4 { font-size: 10.8pt; color: #12355b; margin: 10px 0 4px; }
+p { margin: 5px 0 8px; }
+ul, ol { margin: 5px 0 9px 19px; padding: 0; }
+li { margin: 3px 0; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 9.2pt; }
+th { background: #12355b; color: white; text-align: left; padding: 6px; }
+td { border: 1px solid #b9c8d8; padding: 6px; vertical-align: top; }
+tr:nth-child(even) td { background: #f4f7fa; }
+code, pre { font-family: Consolas, monospace; }
+code { background: #edf2f7; padding: 1px 3px; border-radius: 3px; }
+pre { background: #101b2c; color: #edf5ff; padding: 9px; border-radius: 5px; white-space: pre-wrap; font-size: 8.8pt; }
+.cover { min-height: 255mm; display: flex; flex-direction: column; justify-content: center; padding: 15mm; background: linear-gradient(145deg,#eef5fb,#fff); border-left: 9px solid #2f75b5; }
+.cover .tag { color: #2f75b5; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.cover .subtitle { font-size: 15pt; color: #456; margin: 5px 0 22px; }
+.cover .meta { border-top: 1px solid #aac0d5; padding-top: 14px; color: #456; }
+.page-break { page-break-before: always; }
+.avoid { page-break-inside: avoid; }
+.callout { border-left: 5px solid #2f75b5; background: #edf5fc; padding: 9px 11px; margin: 9px 0; }
+.warning { border-left-color: #c0392b; background: #fff0ee; }
+.success { border-left-color: #218c5a; background: #edf9f3; }
+.script { border: 1px solid #9eb9d0; border-left: 5px solid #12355b; padding: 9px 11px; margin: 7px 0 11px; background: #fbfdff; }
+.script:before { content: "SAY THIS"; display: block; color: #2f75b5; font-size: 8pt; font-weight: 800; letter-spacing: .8px; margin-bottom: 4px; }
+.screen { border: 1px solid #c8a956; border-left: 5px solid #d7a820; padding: 9px 11px; margin: 7px 0 11px; background: #fffbed; }
+.screen:before { content: "SHOW / DO THIS ON SCREEN"; display: block; color: #8b6800; font-size: 8pt; font-weight: 800; letter-spacing: .8px; margin-bottom: 4px; }
+.small { font-size: 8.6pt; color: #526273; }
+.time { display: inline-block; background: #2f75b5; color: white; padding: 2px 6px; border-radius: 10px; font-size: 8.5pt; font-weight: 700; }
+.check { color: #18784e; font-weight: 700; }
+.pending { color: #a52a1f; font-weight: 700; }
+.footer-note { font-size: 8pt; color: #647487; border-top: 1px solid #ccd6df; padding-top: 5px; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="tag">CCS2300 · Week 10 Progress Video</div>
+  <h1>Railway Management System<br>Six-Member Full-Mark Presentation Guide</h1>
+  <div class="subtitle">Exact 8–10 minute plan, scripts, demonstrations, code ownership, complexity, testing, viva preparation and recording checklist</div>
+  <div class="meta">
+    <p><strong>Project:</strong> Data Structures-Based Smart Railway Management System</p>
+    <p><strong>Group size:</strong> Exactly 6 members</p>
+    <p><strong>Recommended final duration:</strong> 9 minutes 15 seconds</p>
+    <p><strong>Prepared against:</strong> CCS2300 Group Assignment Guidelines and the current Java source code</p>
+    <p><strong>Date:</strong> 27 July 2026</p>
+  </div>
+</section>
+
+<section class="page-break">
+<h2>1. Important truth before using this guide</h2>
+<div class="callout success"><strong>This guide is designed to cover every progress-video marking category.</strong> It cannot guarantee a mark because grading depends on the actual implementation, visible evidence, delivery and answers. Never claim a feature works unless it can be executed or supported by source/test evidence.</div>
+
+<div class="callout warning">
+  <strong>Current tree gap:</strong> the assignment requires BST and AVL <em>insert, delete, search, inorder, preorder and postorder</em>. The current small <code>TrainBST</code> and <code>TrainAVLTree</code> implement insert, search and inorder; AVL also has balancing rotations. They do not yet implement delete, preorder or postorder, and neither tree is exposed through the running menu. For the strongest progress demonstration, complete and test these missing tree operations before recording. If they remain incomplete, state the exact current status and future plan honestly.
+</div>
+
+<div class="callout">
+  <strong>Sorting is not required in the Week 10 progress demonstration.</strong> The brief says searching and sorting introduced in Weeks 11–12 are for the final submission. Mention Bubble, Selection, Insertion, Merge and Quick Sort only in the future-development plan. Linear search is already present in the train linked list.
+</div>
+
+<h3>Marking alignment</h3>
+<table>
+  <tr><th>Criterion</th><th>Marks</th><th>How this video earns evidence</th></tr>
+  <tr><td>Project understanding and problem analysis</td><td>5</td><td>Clear railway problem, objectives and justification.</td></tr>
+  <tr><td>System design and architecture</td><td>10</td><td>Package/layer diagram, shared state and workflow explanation.</td></tr>
+  <tr><td>Progress demonstration</td><td>40</td><td>Live execution of trains, booking, queue, stack, network, hashing/set and tested trees.</td></tr>
+  <tr><td>Application and justification of structures/algorithms</td><td>20</td><td>Every member explains why their assigned structure suits the feature.</td></tr>
+  <tr><td>Individual contribution and technical explanation</td><td>20</td><td>All six members appear, explain assigned code, complexity, challenge and solution.</td></tr>
+  <tr><td>Professionalism, organization and clarity</td><td>5</td><td>Timed transitions, readable screen, rehearsed speech and clear evidence.</td></tr>
+</table>
+</section>
+
+<section class="page-break">
+<h2>2. Mandatory six-member allocation</h2>
+<p>Use the allocation specified by the assignment brief. Replace “Member 1” etc. with actual names on the title slide.</p>
+<table>
+  <tr><th>Member</th><th>Primary Week 10 ownership</th><th>Relevant project files</th><th>Later sorting ownership</th></tr>
+  <tr><td><strong>1</strong></td><td>Array, linked list, linear search, architecture introduction</td><td><code>StationArray.java</code>, <code>TrainLinkedList.java</code>, <code>Train.java</code>, <code>RailwaySystem.java</code></td><td>Linear search analysis</td></tr>
+  <tr><td><strong>2</strong></td><td>Stack, queue and booking/waiting-list integration</td><td><code>ActionStack.java</code>, <code>WaitingListQueue.java</code>, <code>BookingService.java</code>, <code>BookingAction.java</code></td><td>Bubble Sort</td></tr>
+  <tr><td><strong>3</strong></td><td>Binary Search Tree</td><td><code>TrainBST.java</code>, <code>Train.java</code></td><td>Selection Sort</td></tr>
+  <tr><td><strong>4</strong></td><td>AVL Tree and rotations</td><td><code>TrainAVLTree.java</code>, <code>Train.java</code></td><td>Insertion Sort</td></tr>
+  <tr><td><strong>5</strong></td><td>Graph representation, BFS and DFS</td><td><code>RailwayGraph.java</code>, <code>Station.java</code>, <code>RailwayNetworkMenu.java</code></td><td>Merge Sort</td></tr>
+  <tr><td><strong>6</strong></td><td>Hash table and Set ADT</td><td><code>UserHashTable.java</code>, <code>TrainIdSet.java</code>, <code>AuthenticationService.java</code></td><td>Quick Sort</td></tr>
+</table>
+
+<h3>What every member must understand</h3>
+<ul>
+  <li>The program starts in <code>Application.main</code>, creates one <code>RailwaySystem</code>, seeds data, and opens <code>MainMenu</code>.</li>
+  <li><code>model</code> holds railway objects; <code>structure</code> holds data structures; <code>service</code> holds business rules; <code>menu</code> handles console interaction; <code>railway</code> coordinates the application.</li>
+  <li>The linked list stores complete trains; the Set stores only unique IDs; bookings keep references to the same Train objects.</li>
+  <li>A full train sends a user to the FIFO waiting queue. Cancellation frees a seat and assigns it to the earliest matching queued user.</li>
+  <li>Stack is LIFO; queue is FIFO; hashing gives average O(1); BST can degrade to O(n); AVL stays O(log n); BFS/DFS are O(V+E).</li>
+  <li>All data is in memory, passwords are plain text, and current train routes contain only start and destination. These are acceptable progress-stage limitations, not hidden facts.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>3. Exact 9:15 video timeline</h2>
+<table>
+  <tr><th>Time</th><th>Speaker</th><th>Section</th><th>Visual evidence</th></tr>
+  <tr><td>0:00–0:35</td><td>Member 1</td><td>Title, problem and objectives</td><td>Title slide with all names</td></tr>
+  <tr><td>0:35–1:05</td><td>Member 1</td><td>Architecture and workflow</td><td>Package diagram / UML</td></tr>
+  <tr><td>1:05–2:05</td><td>Member 1</td><td>Array, linked list and linear search</td><td>Stations; admin train view/search</td></tr>
+  <tr><td>2:05–3:20</td><td>Member 2</td><td>Stack, queue and integrated booking flow</td><td>T104 booking, wait list, cancellation, recent actions</td></tr>
+  <tr><td>3:20–4:15</td><td>Member 3</td><td>BST</td><td>Source + tested insert/search/delete/traversals output</td></tr>
+  <tr><td>4:15–5:10</td><td>Member 4</td><td>AVL</td><td>Source + imbalance/rotation + traversal output</td></tr>
+  <tr><td>5:10–6:20</td><td>Member 5</td><td>Graph, BFS and DFS</td><td>Connections; BFS and DFS from CMB</td></tr>
+  <tr><td>6:20–7:30</td><td>Member 6</td><td>Hash table and Set ADT</td><td>User buckets/collision and duplicate train rejection</td></tr>
+  <tr><td>7:30–8:20</td><td>Members 2 &amp; 6</td><td>Testing and evidence summary</td><td>Test table / screenshots / compile result</td></tr>
+  <tr><td>8:20–8:55</td><td>Members 3–6</td><td>Challenges and solutions</td><td>One concise point each</td></tr>
+  <tr><td>8:55–9:15</td><td>Member 1</td><td>Future plan and conclusion</td><td>Milestone slide</td></tr>
+</table>
+<div class="callout"><strong>Recording rule:</strong> every member must be visibly identifiable and speak. Use webcam tiles or introduce each member on camera before their screen recording. Keep the final export between 8:00 and 10:00.</div>
+</section>
+
+<section class="page-break">
+<h2>4. Member 1 script — introduction, architecture, array, linked list</h2>
+<p><span class="time">0:00–2:05</span></p>
+
+<h3>Opening and objectives</h3>
+<div class="screen">Show a title slide: project title, module, group number, six names/IDs, assigned Railway domain, and “Week 10 Progress Demonstration”.</div>
+<div class="script">Good [morning/afternoon]. We are presenting our Data Structures-Based Smart Railway Management System. The objective is to manage trains, users, ticket bookings, waiting passengers and railway connections while demonstrating the practical use of the data structures covered up to Week 10. Our system is implemented in Java as a console application. All six members contributed to design, implementation, integration, testing and documentation, with each member taking primary ownership of the component assigned in the brief.</div>
+
+<h3>Architecture</h3>
+<div class="screen">Show the UML class diagram or a simple architecture slide:
+<pre>Application → RailwaySystem → Menus → Services → Models / Structures
+model: Train, User, Booking, Station
+structure: Array, List, Stack, Queue, BST, AVL, Graph, Hash Table, Set</pre></div>
+<div class="script">The project uses a layered package structure. The railway package starts and initializes the application. Models represent Train, User, Booking and Station data. Custom structures implement the required data structures. Services contain validation and business rules, while menus handle console input and output. RailwaySystem owns the shared structures so every menu and service operates on the same in-memory objects.</div>
+
+<h3>Array</h3>
+<div class="screen">Run: Main menu → Admin → password <code>admin123</code> → Railway network → Stations. Briefly show <code>StationArray.addStation</code> and its <code>String[] stations</code>.</div>
+<div class="script">My first structure is a fixed-size array for predefined station names. A size variable identifies the next unused position. Adding at that position is O(1) when capacity remains. Searching and displaying scan the occupied elements and therefore take O(n). The array is suitable because the configuration has a known maximum capacity and supports simple indexed storage.</div>
+
+<h3>Linked list and linear search</h3>
+<div class="screen">Admin → Manage trains → View all. Then Search → enter <code>T101</code>. Optionally add <code>T105</code>, show it, then delete it so demo data is restored. Display <code>TrainNode { Train train; TrainNode next; }</code> in the IDE.</div>
+<div class="script">Complete Train objects are stored in a custom singly linked list. Each node stores one Train and a reference to the next node. This supports a dynamic number of trains without shifting array elements. Adding at the current tail implementation, searching by ID, deleting and displaying take O(n). The search compares each train ID sequentially, so this also demonstrates linear search. Its best case is O(1) when the first train matches and its average and worst cases are O(n).</div>
+
+<h3>Member 1 must understand</h3>
+<ul>
+  <li><code>head</code> points to the first train node; <code>null</code> marks the end.</li>
+  <li>Deleting the head differs from deleting a later node.</li>
+  <li>Array capacity is 10; only <code>size</code> positions are occupied.</li>
+  <li>Space: station array O(capacity); linked list O(n).</li>
+  <li>Challenge/solution: dynamic train records needed flexible storage, so a linked list was used.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>5. Member 2 script — stack, queue and booking integration</h2>
+<p><span class="time">2:05–3:20</span></p>
+
+<div class="screen">
+Prepare two accounts, <code>alice</code> and <code>bob</code>. Train <code>T104</code> has one seat and route <code>Colombo Fort → Jaffna</code>.
+<ol>
+  <li>Log in as Alice; Book ticket; enter route and <code>T104</code>; show successful booking and note its displayed booking ID.</li>
+  <li>Log out; log in as Bob; attempt the same route/train; show that Bob joins the waiting list; select “My waiting list”.</li>
+  <li>Log out; log in as Alice; “My bookings”; cancel the displayed booking ID.</li>
+  <li>Log in as Bob; “My bookings” shows automatic allocation; “Recent actions” shows newest-first activity.</li>
+</ol>
+</div>
+
+<div class="script">My component integrates a custom stack and queue with ticket booking. The recent-action stack is LIFO: every successful booking, cancellation or automatic queue booking is pushed at the top, so the newest action is displayed first. Push, pop and peek are O(1), while displaying one user’s actions scans the stack in O(n).</div>
+
+<div class="script">The waiting list is a custom linked FIFO queue with front and rear references. When T104 is full, Bob is enqueued at the rear. When Alice cancels, BookingService frees the seat, removes the earliest waiting entry for that train and creates Bob’s booking automatically. Standard enqueue and front dequeue are O(1). Because one global queue contains entries for different trains, dequeueForTrain searches for the earliest matching train and is O(n). Duplicate waiting entries are rejected.</div>
+
+<h3>Point to these methods</h3>
+<table>
+  <tr><th>File/method</th><th>What to explain</th></tr>
+  <tr><td><code>ActionStack.push</code></td><td>New node points to old top; top moves to new node.</td></tr>
+  <tr><td><code>WaitingListQueue.enqueue</code></td><td>Rear insertion; update front when first item is added.</td></tr>
+  <tr><td><code>BookingService.cancel</code></td><td>Free seat, record cancellation, call automatic allocation.</td></tr>
+  <tr><td><code>assignSeatToNextUser</code></td><td>Dequeue matching passenger, reserve seat and record action.</td></tr>
+</table>
+
+<h3>Member 2 must understand</h3>
+<ul>
+  <li>LIFO versus FIFO and why each fits its feature.</li>
+  <li>Why both <code>front</code> and <code>rear</code> are needed for O(1) enqueue.</li>
+  <li>Space for both structures is O(n).</li>
+  <li>Challenge/solution: a cancelled seat must go to the correct train’s earliest waiting user; the queue scans for the first matching train.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>6. Member 3 script — Binary Search Tree</h2>
+<p><span class="time">3:20–4:15</span></p>
+
+<div class="callout warning"><strong>Before recording:</strong> add and test <code>delete</code>, <code>displayPreOrder</code> and <code>displayPostOrder</code>. The rubric explicitly names them. If incomplete, say “currently in progress” and do not show fabricated output.</div>
+
+<div class="screen">Show <code>TrainBST.java</code> beside a tiny test output. Insert trains in this order: <code>T20, T10, T30, T25</code>. Demonstrate:
+<pre>Search T25 → found
+Inorder   → T10 T20 T25 T30
+Preorder  → T20 T10 T30 T25
+Postorder → T10 T25 T30 T20
+Delete T20
+Inorder   → T10 T25 T30</pre>
+If the exact root/implementation differs after deletion, show the real tested output rather than memorizing an assumed result.</div>
+
+<div class="script">My component is a Binary Search Tree that indexes Train objects by train ID. Each node contains a Train, a left child and a right child. IDs smaller than the current node go left and larger IDs go right; duplicate IDs are not inserted. Search follows only one branch according to the comparison. Inorder traversal produces sorted train IDs, while preorder visits root-left-right and postorder visits left-right-root.</div>
+
+<div class="script">Deletion has three cases: a leaf is removed directly; a node with one child is replaced by that child; and a node with two children is replaced by its inorder successor, the smallest node in its right subtree. In a balanced BST, insert, search and delete are O(log n), but sorted insertion can make it skewed, causing O(n) worst-case time. Traversals are O(n), and storage is O(n).</div>
+
+<h3>Member 3 must understand</h3>
+<ul>
+  <li>BST property and case-insensitive ID comparison.</li>
+  <li>All three deletion cases and the inorder successor.</li>
+  <li>Difference among inorder, preorder and postorder.</li>
+  <li>Best search O(1) at root; average O(log n); worst O(n).</li>
+  <li>Challenge/solution: duplicate IDs are ignored/rejected to preserve one key per node.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>7. Member 4 script — AVL Tree</h2>
+<p><span class="time">4:15–5:10</span></p>
+
+<div class="callout warning"><strong>Before recording:</strong> add and test AVL deletion plus preorder and postorder. AVL deletion must also update heights and rebalance nodes while recursion returns.</div>
+
+<div class="screen">Show <code>TrainAVLTree.java</code> and a three-node demonstration:
+<pre>Insert T10, T20, T30
+Before balancing: T10 → T20 → T30 (right-heavy)
+Balance at T10 = 0 - 2 = -2
+Left rotation
+New root: T20; children: T10 and T30
+Inorder: T10 T20 T30
+Search T30 → found</pre>
+Also display a one-slide table: LL → right rotation; RR → left rotation; LR → left then right; RL → right then left.</div>
+
+<div class="script">My component is an AVL tree, which is a self-balancing Binary Search Tree. Each node additionally stores its height. After insertion or deletion, the balance factor is calculated as left-subtree height minus right-subtree height. A value of minus one, zero or one is balanced. If it becomes greater than one or less than minus one, rotations restore balance.</div>
+
+<div class="script">In this example, inserting T10, T20 and T30 creates a right-right imbalance with balance factor minus two, so a left rotation makes T20 the root. The four cases are left-left, right-right, left-right and right-left. AVL search, insertion and deletion remain O(log n) in the worst case because the height stays logarithmic. Traversals remain O(n), and storage is O(n).</div>
+
+<h3>Member 4 must understand</h3>
+<ul>
+  <li>Height of null is 0; a new leaf has height 1 in this implementation.</li>
+  <li><code>height = 1 + max(leftHeight, rightHeight)</code>.</li>
+  <li>How pointers change during left and right rotations.</li>
+  <li>Why heights must be updated bottom-up after rotations.</li>
+  <li>BST versus AVL: same ordering, but only AVL guarantees logarithmic height.</li>
+  <li>Challenge/solution: rotation order is critical; update the old root before the new root.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>8. Member 5 script — graph, BFS and DFS</h2>
+<p><span class="time">5:10–6:20</span></p>
+
+<div class="screen">Admin or User → Railway network:
+<ol>
+  <li>Select Connections and show the adjacency-list representation.</li>
+  <li>Select BFS; enter <code>CMB</code>; capture actual output.</li>
+  <li>Select DFS; enter <code>CMB</code>; capture actual output.</li>
+  <li>Show the railway graph slide/diagram with CMB connected to KDY, MTR and JFN, and KDY connected to BDL.</li>
+</ol>
+</div>
+
+<div class="script">My component represents the railway network as an undirected graph. Stations are vertices and direct railway connections are edges. An adjacency list is suitable because this network is sparse and it stores only existing connections. Adding a route in both directions represents two-way travel.</div>
+
+<div class="script">Breadth-First Search uses a queue and visits stations level by level. Starting at CMB, it first visits the direct neighbours before stations farther away. Depth-First Search uses recursion and follows one branch deeply before backtracking. A visited set prevents repeated visits and cycles. Both BFS and DFS take O(V plus E) time. Adjacency-list space is O(V plus E); BFS additionally uses O(V) queue/visited space and recursive DFS can use O(V) call-stack space.</div>
+
+<h3>Point to these details</h3>
+<ul>
+  <li><code>stations</code> maps IDs to Station objects.</li>
+  <li><code>adjacencyList</code> maps each station ID to neighbour IDs.</li>
+  <li><code>addRoute</code> inserts both directions and rejects invalid/self routes.</li>
+  <li>BFS calls <code>queue.offer</code>/<code>poll</code>; DFS calls <code>dfsRecursive</code>.</li>
+</ul>
+
+<h3>Member 5 must understand</h3>
+<ul>
+  <li>Vertex, edge, path, neighbour, adjacency list and visited set.</li>
+  <li>BFS is appropriate for shortest paths in an unweighted graph, although the current method demonstrates traversal rather than returning a specific path.</li>
+  <li>Challenge/solution: cycles could cause infinite revisits; the visited set prevents them.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>9. Member 6 script — hash table and Set ADT</h2>
+<p><span class="time">6:20–7:30</span></p>
+
+<div class="screen">
+<ol>
+  <li>Register <code>alice</code> and <code>david</code>. With the current 10-bucket table these names map to the same bucket, providing collision evidence.</li>
+  <li>Admin → Manage users → Display table. Point to the chain such as <code>[david] → [alice]</code> in one bucket. Use the actual output.</li>
+  <li>Admin → Manage trains → Display train ID set.</li>
+  <li>Try adding a train using existing ID <code>T101</code>; show “A train with that ID already exists.”</li>
+</ol>
+</div>
+
+<div class="script">My component contains a custom user hash table and a custom hash-based Set ADT. The user hash function normalizes the username, obtains its Java hash code, and uses floor modulus with the bucket-array length to produce a valid index. This supports efficient registration and login lookup.</div>
+
+<div class="script">Different usernames may produce the same bucket index. We handle collisions using separate chaining: each bucket is the head of a linked list of user nodes. Alice and David demonstrate a real collision in our ten-bucket table. Average insert, retrieve and remove time is O(1), while the worst case is O(n) if many keys form one chain. Space is O(n plus bucket capacity).</div>
+
+<div class="script">The Train ID Set stores normalized unique IDs rather than complete Train objects. Before a train is added, the service checks the set. An existing T101 is rejected, demonstrating duplicate prevention. Set add, contains and remove are average O(1) and worst O(n) with chaining.</div>
+
+<h3>Member 6 must understand</h3>
+<ul>
+  <li>Hash function, bucket, collision and separate chaining.</li>
+  <li>Why <code>Math.floorMod</code> avoids a negative array index.</li>
+  <li>Why IDs are uppercased and usernames compared case-insensitively.</li>
+  <li>Difference between a map/hash table (key → User) and a set (unique IDs only).</li>
+  <li>Challenge/solution: collisions are unavoidable; chaining preserves all colliding entries.</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>10. Testing evidence and closing script</h2>
+<p><span class="time">7:30–9:15</span></p>
+
+<h3>Testing evidence slide</h3>
+<div class="screen">Show a compact table with green Pass results. Include screenshots beside it if readable.</div>
+<table>
+  <tr><th>Test</th><th>Input/action</th><th>Expected evidence</th></tr>
+  <tr><td>Array validation</td><td>Add/search known station</td><td>Station displayed; duplicate rejected</td></tr>
+  <tr><td>Linked-list linear search</td><td>Search T101 and unknown ID</td><td>Found / not found</td></tr>
+  <tr><td>Queue allocation</td><td>Fill T104, queue Bob, cancel Alice</td><td>Bob automatically receives seat</td></tr>
+  <tr><td>Stack order</td><td>Book then cancel</td><td>Newest action displayed first</td></tr>
+  <tr><td>BST</td><td>Insert/search/delete/traversals</td><td>Correct sorted/traversal output</td></tr>
+  <tr><td>AVL</td><td>Insert T10,T20,T30</td><td>Rotation; T20 becomes root</td></tr>
+  <tr><td>Graph</td><td>BFS/DFS from CMB</td><td>All reachable vertices visited once</td></tr>
+  <tr><td>Hash collision</td><td>Register alice and david</td><td>Both retained in one chain</td></tr>
+  <tr><td>Set duplicate</td><td>Add existing T101</td><td>Duplicate rejected</td></tr>
+</table>
+
+<div class="script">We performed positive, negative and boundary tests across the structures. Examples include valid and invalid searches, duplicate ID rejection, collision-chain retrieval, empty structure behaviour, a full-train waiting list, automatic seat assignment and graph traversal from both valid and invalid station IDs. The complete source compiles successfully, and our preliminary results confirm that the demonstrated operations behave as expected.</div>
+
+<h3>Concise challenge statements — one per responsible member</h3>
+<ul>
+  <li><strong>Member 1:</strong> “We separated dynamic train records from the fixed station configuration using a linked list and array respectively.”</li>
+  <li><strong>Member 2:</strong> “We linked cancellation to the earliest matching waiting entry while preventing duplicate queue entries.”</li>
+  <li><strong>Member 3:</strong> “We handled the three BST deletion cases using an inorder successor.”</li>
+  <li><strong>Member 4:</strong> “We corrected imbalances by updating heights and applying the appropriate single or double rotation.”</li>
+  <li><strong>Member 5:</strong> “We prevented repeated traversal in a cyclic graph using a visited set.”</li>
+  <li><strong>Member 6:</strong> “We preserved colliding keys through separate chaining and normalized IDs for case-insensitive uniqueness.”</li>
+</ul>
+
+<h3>Future-development and conclusion script</h3>
+<div class="screen">Show milestones: sorting algorithms → timing comparison → full tree/menu integration → final tests → report/screenshots → viva rehearsal.</div>
+<div class="script">Before the final submission, Member 2 will implement Bubble Sort, Member 3 Selection Sort, Member 4 Insertion Sort, Member 5 Merge Sort and Member 6 Quick Sort. We will compare execution times and best, average, worst and space complexities using common test data. We will complete any remaining tree integration and operations, run full integration and performance tests, finalize screenshots and documentation, and prepare every member for questions on the complete system. This concludes our Week 10 progress demonstration. Thank you.</div>
+</section>
+
+<section class="page-break">
+<h2>11. Complexity master sheet</h2>
+<table>
+  <tr><th>Component / operation</th><th>Best</th><th>Average</th><th>Worst</th><th>Auxiliary/storage space</th></tr>
+  <tr><td>Station array add at next position</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(capacity)</td></tr>
+  <tr><td>Station array search</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(1) auxiliary</td></tr>
+  <tr><td>Linked-list search/delete</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n) storage</td></tr>
+  <tr><td>Linked-list add at end (current code)</td><td>O(1) empty</td><td>O(n)</td><td>O(n)</td><td>O(1) auxiliary</td></tr>
+  <tr><td>Stack push/pop/peek</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(n) storage</td></tr>
+  <tr><td>Queue enqueue/front dequeue</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(n) storage</td></tr>
+  <tr><td>Queue matching train search/dequeue</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(1) auxiliary</td></tr>
+  <tr><td>BST search/insert/delete</td><td>O(1) search root</td><td>O(log n)</td><td>O(n)</td><td>O(n) storage; recursion up to O(n)</td></tr>
+  <tr><td>BST traversal</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>O(h) recursion</td></tr>
+  <tr><td>AVL search/insert/delete</td><td>O(1) search root</td><td>O(log n)</td><td>O(log n)</td><td>O(n) storage; O(log n) recursion</td></tr>
+  <tr><td>AVL traversal</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>O(log n) recursion</td></tr>
+  <tr><td>Hash table / Set add,get,remove</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>O(n + capacity)</td></tr>
+  <tr><td>BFS</td><td colspan="3">O(V + E)</td><td>O(V) auxiliary; graph O(V+E)</td></tr>
+  <tr><td>DFS</td><td colspan="3">O(V + E)</td><td>O(V) visited/call stack; graph O(V+E)</td></tr>
+</table>
+<div class="callout"><strong>Do not say every operation is O(log n).</strong> Use the current implementation. For example, linked-list tail insertion is O(n) because there is no tail pointer, and <code>dequeueForTrain</code> is O(n) because it searches a mixed-train queue.</div>
+</section>
+
+<section class="page-break">
+<h2>12. Likely viva questions and safe answers</h2>
+<table>
+  <tr><th>Question</th><th>Strong concise answer</th></tr>
+  <tr><td>Why use both a linked list and trees for trains?</td><td>The linked list is the main dynamic collection and supports sequential display; trees can act as indexes for ordered traversal and faster ID search. In a final integrated design, all indexes should reference the same Train objects.</td></tr>
+  <tr><td>Why is AVL faster than BST?</td><td>It is not always faster for every small input, but it guarantees O(log n) height by rotations. A normal BST can become skewed and reach O(n).</td></tr>
+  <tr><td>Why use a Set if the linked list can check duplicates?</td><td>The linked list duplicate check is O(n). A hash-based Set provides average O(1) membership checks and explicitly models uniqueness.</td></tr>
+  <tr><td>How are hash collisions handled?</td><td>Separate chaining: each bucket points to a linked list, and all keys with that bucket index are retained and compared.</td></tr>
+  <tr><td>Why does BFS use a queue?</td><td>FIFO order processes vertices in discovery order, producing level-by-level traversal.</td></tr>
+  <tr><td>Why does the waiting queue sometimes take O(n)?</td><td>The system has one queue containing multiple train IDs, so assigning a seat searches for the earliest entry for a particular train.</td></tr>
+  <tr><td>What happens when a duplicate train ID is entered?</td><td>TrainService checks TrainIdSet and the linked list; it rejects the addition with an error message.</td></tr>
+  <tr><td>What is the current biggest limitation?</td><td>Data is in memory and intermediate route stops are not modelled. Also describe the truthful current tree integration status.</td></tr>
+  <tr><td>What will be done after Week 10?</td><td>Implement and benchmark the assigned sorting algorithms, complete remaining integration, full testing, complexity report, documentation and viva preparation.</td></tr>
+</table>
+
+<h3>Every member’s 30-second architecture answer</h3>
+<div class="script">Application creates RailwaySystem and opens MainMenu. RailwaySystem owns the shared structures. Models hold railway data, custom structure classes implement the algorithms, services apply validation and business rules, and menus handle user interaction. For example, UserMenu calls BookingService, which updates the Train, User bookings, ActionStack and WaitingListQueue using the same shared objects.</div>
+</section>
+
+<section class="page-break">
+<h2>13. Recording preparation checklist</h2>
+<h3>Technical readiness — complete before recording</h3>
+<ul>
+  <li><span class="check">✓</span> Compile all source using the installed JDK and capture a clean successful result.</li>
+  <li><span class="check">✓</span> Confirm the console font is at least 16–18 px and usernames/booking IDs are readable.</li>
+  <li><span class="pending">Required check:</span> complete/test BST and AVL delete, preorder and postorder, or label them honestly as incomplete.</li>
+  <li><span class="pending">Required check:</span> prepare a repeatable tree demonstration or screenshots from actual output.</li>
+  <li>Reset/restart the program before the final take so T104 has one available seat.</li>
+  <li>Create Alice and Bob during the demo, or pre-create them and clearly explain the setup.</li>
+  <li>Write down Alice’s generated booking ID before cancellation.</li>
+  <li>Test the <code>alice</code>/<code>david</code> collision immediately before recording; show actual bucket output.</li>
+  <li>Prepare the UML/architecture, graph, complexity and future-plan slides.</li>
+  <li>Keep backup screenshots in case a live step fails.</li>
+</ul>
+
+<h3>Presentation quality</h3>
+<ul>
+  <li>Every member says their name, responsibility, implementation, complexity, challenge and solution.</li>
+  <li>Do not read code line by line. Point to one key method and explain its logic.</li>
+  <li>Do not speed through output; pause for two seconds after each result.</li>
+  <li>Remove notifications, hide unrelated windows and avoid showing passwords other than the supplied demo admin password.</li>
+  <li>Use one narrator for transitions: “Now Member 4 will demonstrate AVL balancing.”</li>
+  <li>Rehearse once with a stopwatch; target 9:00–9:30.</li>
+  <li>Export at 1080p where possible and verify audio for all six members.</li>
+</ul>
+
+<h3>Evidence folder checklist</h3>
+<ul>
+  <li>Successful compilation screenshot</li>
+  <li>Array/station display</li>
+  <li>Linked-list add/search/delete</li>
+  <li>Stack recent-action order</li>
+  <li>Queue automatic seat assignment</li>
+  <li>BST operations and traversals</li>
+  <li>AVL rotation and operations</li>
+  <li>Graph representation, BFS and DFS</li>
+  <li>Hash collision chain</li>
+  <li>Set duplicate rejection</li>
+  <li>Test case table with expected/actual/pass</li>
+</ul>
+</section>
+
+<section class="page-break">
+<h2>14. Final “do not lose marks” list</h2>
+<ol>
+  <li><strong>All six members must appear and actively speak.</strong></li>
+  <li><strong>Show actual running evidence, not slides alone.</strong> Progress demonstration carries 40 marks.</li>
+  <li><strong>Explain why each structure was selected</strong>, not only what it is.</li>
+  <li><strong>State real complexity from this code</strong>, including average and worst cases.</li>
+  <li><strong>Show preliminary testing</strong>: successful, invalid, duplicate and empty/boundary behaviours.</li>
+  <li><strong>Be honest about status.</strong> Never describe an unimplemented tree operation as completed.</li>
+  <li><strong>Keep sorting in the future plan</strong> for Week 11–12, exactly as the brief permits.</li>
+  <li><strong>Stay within 8–10 minutes.</strong></li>
+  <li><strong>Every member must understand the overall architecture</strong>, because the viva can cover any component.</li>
+  <li><strong>Use your own natural words after learning this script.</strong> The assignment warns that inability to explain submitted work can result in deductions.</li>
+</ol>
+
+<div class="callout success"><strong>Best final message to the marker:</strong> the system does not merely contain isolated data-structure classes. The linked list, stack, queue, hash table, set and graph support visible railway features, while the tree demonstration shows ordered and balanced indexing. The group understands the benefits, trade-offs, complexity, testing and remaining development plan.</div>
+
+<p class="footer-note">Prepared from the local CCS2300 assignment brief and the RailwayProjectStructured source as of 27 July 2026. Verify the final source state before recording.</p>
+</section>
+
+</body>
+</html>

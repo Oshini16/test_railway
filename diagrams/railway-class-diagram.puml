@@ -1,0 +1,206 @@
+@startuml
+title Railway Management System - UML Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+package railway {
+  class Application {
+    {static} +main(args : String[]) : void
+  }
+
+  class RailwaySystem {
+    -users : UserHashTable
+    -trains : TrainLinkedList
+    -actions : ActionStack
+    -waitingList : WaitingListQueue
+    -graph : RailwayGraph
+    -stations : StationArray
+    +initialize() : void
+    +getUsers() : UserHashTable
+    +getTrains() : TrainLinkedList
+    +getActions() : ActionStack
+    +getWaitingList() : WaitingListQueue
+    +getGraph() : RailwayGraph
+    +getStations() : StationArray
+  }
+}
+
+package model {
+  class User {
+    -username : String
+    -password : String
+    -bookings : ArrayList<Booking>
+    +getUsername() : String
+    +getPassword() : String
+    +getBookings() : ArrayList<Booking>
+    +addBooking(booking : Booking) : void
+  }
+
+  class Train {
+    -trainId : String
+    -trainName : String
+    -startStation : String
+    -destination : String
+    -totalSeats : int
+    -availableSeats : int
+    +bookSeat() : boolean
+    +cancelSeat() : boolean
+  }
+
+  class Booking {
+    {static} -nextBookingNumber : int
+    -bookingId : String
+    -username : String
+    -train : Train
+    +getBookingId() : String
+    +getTrain() : Train
+  }
+
+  class BookingAction {
+    -actionType : String
+    -username : String
+    -bookingId : String
+    -trainId : String
+  }
+
+  class Station {
+    -stationId : String
+    -stationName : String
+  }
+}
+
+package structure {
+  class TrainLinkedList {
+    -head : TrainNode
+    -size : int
+    +addTrain(train : Train) : void
+    +searchTrainById(trainId : String) : Train
+    +searchTrainByRoute(trainId : String, start : String, destination : String) : Train
+    +deleteTrainById(trainId : String) : boolean
+    +displayTrainsByRoute(start : String, destination : String) : boolean
+  }
+
+  class UserHashTable {
+    -buckets : UserNode[]
+    -size : int
+    +put(key : String, user : User) : void
+    +get(key : String) : User
+    +remove(key : String) : boolean
+    +containsKey(key : String) : boolean
+  }
+
+  class StationArray {
+    -stations : String[]
+    -size : int
+    +addStation(stationName : String) : boolean
+    +searchStation(stationName : String) : String
+  }
+
+  class RailwayGraph {
+    -stations : Map<String, Station>
+    -adjacencyList : Map<String, ArrayList<String>>
+    +addStation(station : Station) : boolean
+    +addRoute(firstId : String, secondId : String) : boolean
+    +bfs(startId : String) : ArrayList<String>
+    +dfs(startId : String) : ArrayList<String>
+  }
+
+  class ActionStack {
+    -top : ActionNode
+    -size : int
+    +push(action : BookingAction) : void
+    +pop() : BookingAction
+    +peek() : BookingAction
+    +isEmpty() : boolean
+  }
+
+  class WaitingListQueue {
+    -front : QueueNode
+    -rear : QueueNode
+    -size : int
+    +enqueue(user : User, train : Train) : boolean
+    +dequeue() : WaitingEntry
+    +dequeueForTrain(trainId : String) : WaitingEntry
+    +peek() : WaitingEntry
+    +isEmpty() : boolean
+  }
+
+  class WaitingEntry {
+    -user : User
+    -train : Train
+  }
+
+  class TrainBST <<planned>>
+  class TrainAVLTree <<planned>>
+  class TrainIdSet {
+    -buckets : IdNode[]
+    -size : int
+    +add(trainId : String) : boolean
+    +contains(trainId : String) : boolean
+    +remove(trainId : String) : boolean
+    +displaySet() : void
+    +size() : int
+    +isEmpty() : boolean
+  }
+}
+
+package service {
+  class AuthenticationService
+  class BookingService
+  class TrainService
+  class UserService
+}
+
+package menu {
+  class MainMenu
+  class AdminMenu
+  class UserMenu
+  class RailwayNetworkMenu
+}
+
+Application --> RailwaySystem : creates
+RailwaySystem *-- UserHashTable
+RailwaySystem *-- TrainLinkedList
+RailwaySystem *-- TrainIdSet
+RailwaySystem *-- StationArray
+RailwaySystem *-- RailwayGraph
+RailwaySystem *-- ActionStack
+RailwaySystem *-- WaitingListQueue
+
+User "1" *-- "0..*" Booking
+Booking --> "1" Train
+ActionStack o-- "0..*" BookingAction
+WaitingListQueue o-- "0..*" WaitingEntry
+WaitingEntry --> User
+WaitingEntry --> Train
+RailwayGraph o-- "0..*" Station
+
+AuthenticationService --> UserHashTable
+BookingService --> TrainLinkedList
+BookingService --> ActionStack
+BookingService --> WaitingListQueue
+TrainService --> TrainLinkedList
+TrainService --> TrainIdSet
+UserService --> UserHashTable
+
+MainMenu --> AuthenticationService
+MainMenu --> AdminMenu
+MainMenu --> UserMenu
+AdminMenu --> TrainService
+AdminMenu --> UserService
+UserMenu --> BookingService
+RailwayNetworkMenu --> RailwayGraph
+
+note right of TrainBST
+  Empty placeholder in the
+  current source code.
+end note
+
+note right of TrainAVLTree
+  Empty placeholder in the
+  current source code.
+end note
+
+@enduml
